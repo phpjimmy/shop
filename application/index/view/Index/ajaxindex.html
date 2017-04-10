@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ajax分页</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="/static/home/js/jquery-1.7.2.js" type="text/javascript"></script>
+    </head>
+    <body>
+        
+        <div>
+            <ul>
+                {foreach $list as $v}
+                <li>姓名：{$v.username}</li>
+                {/foreach}
+            </ul>
+        </div>
+        
+        <?php for($i=1;$i<$total;$i++):?>
+            <?php if($page==$i):?>
+            <a data-p="<?php echo $i;?>" style="border:1px solid red; padding: 5px 10px; background: red;"><?php echo $i;?></a>
+            <?php else:?>
+            <a data-p="<?php echo $i;?>" style="border:1px solid red;padding:5px 10px;"><?php echo $i;?></a>
+            <?php endif;?>
+        <?php endfor;?>
+        
+    </body>
+</html>
+
+<script>
+    $("a").click(function(){
+//        var p=$(this).data("p");//data-p
+//        $.ajax({
+//            type:"GET",
+//            url:"/index/Index/ajaxindex/p/"+p,
+//            data:{},
+//            dataType:"html",
+//            success:function (data){
+////                $("#content-list").html("");
+////                $("#content-list").html(data);
+//                alert(data);
+//            }
+//        })
+        
+        
+        //跨域问题
+        $.ajax({
+            url:"http://shop.io/index.php?m=home&c=Goods&a=goods&goods_id=2&callback=?",
+            type:"GET",
+            dataType:"jsonp",
+            success:function(data){
+                alert(data);
+            }
+        })
+        
+    })
+</script>

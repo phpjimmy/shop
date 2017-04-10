@@ -1,0 +1,6 @@
+
+TP-四种url访问的方式:
+1：http://localhost/index.php?m=模块&c=控制器&a=操作方法     [get模式]
+2：http://localhost/index.php/模块[模块文件夹]/控制器/操作方法    [pathinfo模式]
+3：http://localhost/模块[模块文件夹]/控制器/操作方法     [rewite重写模式]
+4：http://localhost/index.php?s=/模块[模块文件夹]/控制器/操作方法  [兼容模式]
